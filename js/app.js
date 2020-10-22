@@ -83,18 +83,33 @@ function setActiveSection() {
 }
 
 function hideNavBar() {
-  console.log(prevYPos);
   let curYPos = window.pageYOffset;
-  console.log(curYPos);
   if (prevYPos > curYPos) {
     pageHeader.style.top = "0";
   } else {
-    pageHeader.style.top = "-50px";
+    pageHeader.style.top = "-110px";
   }
   prevYPos = curYPos;
 }
+// Code to make href links smooth source: https://www.geeksforgeeks.org/how-to-set-smooth-scroll-after-clicking-the-link-using-javascript/ date:10/14/20
+function initSmoothScroll() {
+  let anchorSelector = 'a[href^="#"]';
+  let anchorList = document.querySelectorAll(anchorSelector);
+
+  anchorList.forEach(link => {
+      link.onclick = function (e) {
+          e.preventDefault();
+          let destination = document.querySelector(this.hash);
+          destination.scrollIntoView({
+              behavior: 'smooth'
+          });
+      }
+  });
+}
+
 
 buildNavBar();
+initSmoothScroll();
 /**
  * End Main Functions
  * Begin Events
