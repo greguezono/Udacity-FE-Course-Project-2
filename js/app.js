@@ -49,6 +49,7 @@ function buildNavBar() {
     listItem.classList.add("menu__link");
     listItem.innerText = sectionName;
     anchorItem.setAttribute("href", "#" + section.parentElement.getAttribute("id"));
+    anchorItem.setAttribute("id", "links");
     anchorItem.appendChild(listItem);
     navbarMenu.appendChild(anchorItem);
   }
@@ -87,7 +88,7 @@ function hideNavBar() {
   if (prevYPos > curYPos) {
     pageHeader.style.top = "0";
   } else {
-    pageHeader.style.top = "-110px";
+    pageHeader.style.top = "-250px";
   }
   prevYPos = curYPos;
 }
@@ -105,6 +106,15 @@ function initSmoothScroll() {
           });
       }
   });
+}
+
+function toggleMenu() {
+  var menu = document.getElementsByClassName("navbar__menu")[0];
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
 }
 
 
