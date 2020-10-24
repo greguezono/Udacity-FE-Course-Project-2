@@ -66,21 +66,50 @@ function getSectionsFromLandingContainers() {
 function setActiveSection() {
       const sections = getSectionsFromLandingContainers();
       const curYPosition = window.scrollY;
+      console.log("ypos: " + curYPosition);
 
       for (let section of sections) { 
-        const top = section.getBoundingClientRect().top;
-        const bottom = section.getBoundingClientRect().bottom;
+        var position = getCoords(section);
+        const top = position.top;
+        const bottom = position.bottom;
+        
+        
 
         if (curYPosition >= top && curYPosition <= bottom) {
+          console.log("Section: " + section.getAttribute('id'));
+          console.log("top: " + top);
+          console.log("bot: " + bottom);
+
           const previous_active = document.querySelector('.active');
+          const previouseMenuActive = document.querySelector('.activeMenuSection');
+          
           if (previous_active) {
             previous_active.classList.remove('active');
           }
+
+          if (previouseMenuActive) {
+            previouseMenuActive.classList.remove('activeMenuSection');
+          }
+
           if (!section.classList.contains("active")) {
             section.classList.add('active');
+            let sectionName = section.getAttribute('id');
+            let menuSection = document.querySelectorAll("a[href='#" + sectionName + "']")[0];
+            menuSection.classList.add('activeMenuSection');
           }
         }
       }
+}
+// https://javascript.info/coordinates
+function getCoords(elem) {
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + window.pageYOffset,
+    right: box.right + window.pageXOffset,
+    bottom: box.bottom + window.pageYOffset,
+    left: box.left + window.pageXOffset
+  };
 }
 
 function hideNavBar() {
