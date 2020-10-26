@@ -66,7 +66,6 @@ function getSectionsFromLandingContainers() {
 function setActiveSection() {
       const sections = getSectionsFromLandingContainers();
       const curYPosition = window.scrollY;
-      console.log("ypos: " + curYPosition);
 
       for (let section of sections) { 
         var position = getCoords(section);
@@ -76,9 +75,6 @@ function setActiveSection() {
         
 
         if (curYPosition >= top && curYPosition <= bottom) {
-          console.log("Section: " + section.getAttribute('id'));
-          console.log("top: " + top);
-          console.log("bot: " + bottom);
 
           const previous_active = document.querySelector('.active');
           const previouseMenuActive = document.querySelector('.activeMenuSection');
@@ -97,7 +93,6 @@ function setActiveSection() {
             let menuSection = document.querySelectorAll("a[href='#" + sectionName + "']")[0];
             let listItem = menuSection.childNodes[0];
             listItem.classList.add('activeMenuSection');
-            console.log(listItem);
           }
         }
       }

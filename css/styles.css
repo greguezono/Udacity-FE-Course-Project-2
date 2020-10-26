@@ -69,6 +69,12 @@ section {
         float: right;
         display: inline;
       }
+
+      .navbar__menu a {
+        display: inline;
+        margin: auto;
+        margin-left: auto;
+      }
 }
 
 .navbar__menu li {
@@ -113,12 +119,13 @@ section {
     overflow: hidden;
     position: relative;
     display: none;
-    float: none;
   }
   
   /* Style navigation menu links */
   .navbar__menu a {
     display: block;
+    margin: auto;
+    margin-left: 35%;
   }
   
   /* Style the hamburger menu */
