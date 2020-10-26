@@ -95,7 +95,9 @@ function setActiveSection() {
             section.classList.add('active');
             let sectionName = section.getAttribute('id');
             let menuSection = document.querySelectorAll("a[href='#" + sectionName + "']")[0];
-            menuSection.classList.add('activeMenuSection');
+            let listItem = menuSection.childNodes[0];
+            listItem.classList.add('activeMenuSection');
+            console.log(listItem);
           }
         }
       }
