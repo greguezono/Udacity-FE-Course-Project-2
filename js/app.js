@@ -66,6 +66,7 @@ function getSectionsFromLandingContainers() {
 function setActiveSection() {
       const sections = getSectionsFromLandingContainers();
       const curYPosition = window.scrollY;
+      const offset = 20;
 
       for (let section of sections) { 
         var position = getCoords(section);
@@ -74,7 +75,7 @@ function setActiveSection() {
         
         
 
-        if (curYPosition >= top && curYPosition <= bottom) {
+        if (curYPosition + offset >= top && curYPosition + offset <= bottom) {
 
           const previous_active = document.querySelector('.active');
           const previouseMenuActive = document.querySelector('.activeMenuSection');
